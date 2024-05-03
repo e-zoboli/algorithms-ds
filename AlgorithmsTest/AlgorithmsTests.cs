@@ -49,4 +49,24 @@ public class AlgorithmsTests
 
         Assert.Equal(sortedList, res);
     }
+
+    [Fact]
+    public void BinarySearchTest_True()
+    {
+        int[] ints = Enumerable.Range(1, 1_000_000).ToArray();
+        int target = 578991;
+
+        var result = BinarySearchAlgo.BinarySearchList(ints, target);
+        Assert.True(result);        
+    }
+
+    [Fact]
+    public void BinarySearchTest_False()
+    {
+        int[] ints = Enumerable.Range(1, 1_000_000).ToArray();
+        int target = 1_000_001;
+
+        var result = BinarySearchAlgo.BinarySearchList(ints, target);
+        Assert.False(result);
+    }
 }
