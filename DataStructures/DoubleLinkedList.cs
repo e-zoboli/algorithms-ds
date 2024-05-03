@@ -79,4 +79,104 @@ public class DoubleLinkedList<T>
         lastNode.Next = newNode;
         newNode.Previous = lastNode;
     }
+
+    public void AddAfter(T t, Node node)
+    {
+        ArgumentNullException.ThrowIfNull(node);
+
+        var newNode = new Node(t)
+        {
+            Next = node.Next,
+            Previous = node
+        };
+
+        Count++;
+        node.Next = newNode;
+        if(newNode.Next is not null)
+        {
+            newNode.Next.Previous = newNode;
+        }
+
+    }
+
+    public void AddBefore(T t, Node node)
+    {
+        ArgumentNullException.ThrowIfNull(node);
+
+        var newNode = new Node(t)
+        {
+            Previous = node.Previous,
+            Next = node
+        };
+
+        Count++;
+        node.Previous = newNode;
+        if(newNode.Previous is not null)
+        {
+            newNode.Previous.Next = newNode;
+            return;
+        }
+        _head = newNode;
+    }
+
+    public bool Contains(T t)
+    {
+        var node = First;
+
+        if(node.Value.Equals(t))
+        {
+            return true;
+        }
+
+        while(node.Next is not null)
+        {
+            node = node.Next;
+            if(node.Value.Equals(t))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public Node Find(T t)
+    {
+        var node = First;
+
+        if(node.Value.Equals(t))
+        {
+            return node;
+        }
+
+        while(node.Next is not null)
+        {
+            node = node.Next;
+            if(node.Value.Equals(t))
+            {
+                return node;
+            }
+        }
+        return null;
+    }
+
+    public Node FindLast(T t)
+    {
+        var node = Last;
+
+        if(node.Value.Equals(t))
+        {
+            return node;
+        }
+
+        while(node.Previous is not null)
+        {
+            node = node.Previous;
+
+            if(node.Value.Equals(t))
+            {
+                return node;
+            }
+        } 
+        return null;
+    }    
 }
