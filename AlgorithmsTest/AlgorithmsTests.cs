@@ -69,4 +69,29 @@ public class AlgorithmsTests
         var result = BinarySearchAlgo.BinarySearchList(ints, target);
         Assert.False(result);
     }
+
+    [Fact]
+    public void TwoCrystalBallsTest_True()
+    {
+        bool[] breaks = new bool[100];
+        for (int i = 70; i < breaks.Length; i++)
+        {
+            breaks[i] = true;
+        }
+
+        int result = TwoCrystalBallsAlgo.TwoCrystalBalls(breaks);
+
+        Assert.Equal(70, result);
+    }
+    
+    [Fact]
+    public void TwoCrystalBallsTest_False()
+    {
+        bool[] breaks = new bool[100];
+
+        int result = TwoCrystalBallsAlgo.TwoCrystalBalls(breaks);
+
+        Assert.Equal(-1, result);
+    }
+    
 }
