@@ -94,4 +94,14 @@ public class AlgorithmsTests
         Assert.Equal(-1, result);
     }
     
+    [Fact]
+    public void BubbleSortTest()
+    {
+        int[] unsortedArray = [5, 1, 4, 2, 8];
+        int[] sortedArray = [1, 2, 4, 5, 8];
+
+        BubbleSortAlgo.BubbleSort(unsortedArray);
+
+        Assert.Equal(sortedArray, unsortedArray);
+    } 
 }
